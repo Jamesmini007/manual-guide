@@ -5,7 +5,7 @@
   display: none !important;
 }
 
-.explorer .content li:has(> a[data-for^="_etc/"]) {
+.explorer .content li:has(> a[data-for^="_etc/"]) { /* <li><a data-for="_etc/…"> */
   display: none !important;
 }
 
@@ -13,3 +13,6 @@
 .explorer a[href*="/_etc/"] {
   display: none !important;
 }
+
+
+
