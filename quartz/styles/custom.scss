@@ -1,16 +1,14 @@
 @import "./base.scss";
- 
-// put your custom CSS here!
-.explorer .folder-container[data-folderpath="_etc/index"] {
+
+/* --- _etc 폴더 자체 숨기기 --- */
+.explorer .folder-container[data-folderpath^="_etc"],
+.explorer .folder-container[data-folderpath*="/_etc/"] {
   display: none !important;
 }
- 
-.explorer .content li:has(> a[data-for^="_etc/"]) {
+
+/* --- _etc 폴더 안의 파일 숨기기 --- */
+.explorer a[href^="_etc/"],
+.explorer a[href*="/_etc/"],
+.explorer a[href^="../_etc/"] {
   display: none !important;
 }
- 
-.explorer a[href^="../_etc/"],
-.explorer a[href*="/_etc/"] {
-  display: none !important;
-}
- 
