@@ -1,11 +1,12 @@
 @import "./base.scss";
  
 // put your custom CSS here!
-.explorer .folder-container[data-folderpath="_etc/index"] {
+.explorer .folder-container[data-folderpath="_etc/index"]{
   display: none !important;
 }
  
-.explorer .content li:has(> a[data-for^="_etc/"]) {
+/
+.explorer .content li:has(> a[data-for^="_etc/"]) {   /* <li><a data-for="_etc/…"> */
   display: none !important;
 }
  
