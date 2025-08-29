@@ -1,15 +1,14 @@
-@use "./base.scss";
+@import "./base.scss"; // 또는 @use, 둘 다 가능하게 설정돼 있어야 함
 
 // put your custom CSS here!
-.explorer .folder-container[data-folderpath="_etc/index"]{
+.explorer .folder-container[data-folderpath="_etc/index"] {
   display: none !important;
 }
- 
 
-.explorer .content li:has(> a[data-for^="_etc/"]) {   /* <li><a data-for="_etc/…"> */
+.explorer .content li:has(> a[data-for^="_etc/"]) {
   display: none !important;
 }
- 
+
 .explorer a[href^="../_etc/"],
 .explorer a[href*="/_etc/"] {
   display: none !important;
