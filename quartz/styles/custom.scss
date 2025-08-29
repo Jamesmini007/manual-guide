@@ -1,10 +1,15 @@
 @import "./base.scss";
-
-/* --- _etc 폴더 및 모든 하위 항목 숨기기 --- */
-.explorer .folder-container[data-folderpath^="_etc"],
-.explorer .folder-container[data-folderpath*="/_etc/"],
-.explorer a[href^="_etc/"],
-.explorer a[href*="/_etc/"],
-.explorer a[href^="../_etc/"] {
+ 
+// put your custom CSS here!
+.explorer .folder-container[data-folderpath="_etc/index"] {
+  display: none !important;
+}
+ 
+.explorer .content li:has(> a[data-for^="_etc/"]) {
+  display: none !important;
+}
+ 
+.explorer a[href^="../_etc/"],
+.explorer a[href*="/_etc/"] {
   display: none !important;
 }
