@@ -32,7 +32,7 @@ export default (() => {
           </button>
         </div>
         
-        <div class="chatbot-overlay" data-chatbot-overlay></div>
+        {/* <div class="chatbot-overlay" data-chatbot-overlay></div> */} {/* 오버레이 제거 */}
         
         <div class="chatbot-popup" data-chatbot-popup>
           <div class="chatbot-popup-header">
@@ -82,13 +82,13 @@ export default (() => {
     (function() {
       const toggleButton = document.querySelector('[data-chatbot-toggle]');
       const popup = document.querySelector('[data-chatbot-popup]');
-      const overlay = document.querySelector('[data-chatbot-overlay]');
+      // const overlay = document.querySelector('[data-chatbot-overlay]'); // 오버레이 제거
       const closeButton = document.querySelector('[data-chatbot-close]');
       const resetButton = document.querySelector('[data-chatbot-reset]');
       const input = document.querySelector('[data-chatbot-input]');
       const sendButton = document.querySelector('[data-chatbot-send]');
 
-      if (!toggleButton || !popup || !overlay || !closeButton) return;
+      if (!toggleButton || !popup || !closeButton) return;
 
       const toggleChatbot = () => {
         const isActive = popup.classList.contains('active');
@@ -101,14 +101,14 @@ export default (() => {
 
       const openChatbot = () => {
         popup.classList.add('active');
-        overlay.classList.add('active');
-        document.body.style.overflow = 'hidden';
+        // overlay.classList.add('active'); // 오버레이 제거
+        // document.body.style.overflow = 'hidden'; // 스크롤 방지 제거
       };
 
       const closeChatbot = () => {
         popup.classList.remove('active');
-        overlay.classList.remove('active');
-        document.body.style.overflow = '';
+        // overlay.classList.remove('active'); // 오버레이 제거
+        // document.body.style.overflow = ''; // 스크롤 복원 제거
       };
 
       const getSessionId = () => {
@@ -141,13 +141,13 @@ export default (() => {
         messagesContainer.appendChild(loadingMessage);
         messagesContainer.scrollTop = messagesContainer.scrollHeight;
 
-        fetch('/openai/chatbot/ask2/json.do', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/x-www-form-urlencoded',
+        fetch('/openai/chatbot/ask2/json.do?q=' + encodeURIComponent(message), {
+          method: 'GET',
+          credentials: 'same-origin',
+          headers: { 
+            'Accept': 'text/plain; charset=UTF-8',
             'X-Chat-Session-Id': getSessionId()
-          },
-          body: 'q=' + encodeURIComponent(message)
+          }
         })
         .then(response => {
           if (!response.ok) {
@@ -163,7 +163,15 @@ export default (() => {
 
           const botMessage = document.createElement('div');
           botMessage.className = 'chatbot-message chatbot-bot-message';
-          botMessage.textContent = answer;
+          
+          // 마크다운을 HTML로 변환 (marked.js 사용)
+          if (typeof marked !== 'undefined') {
+            botMessage.innerHTML = marked.parse(answer);
+          } else {
+            // marked.js가 없으면 일반 텍스트로 표시
+            botMessage.textContent = answer;
+          }
+          
           messagesContainer.appendChild(botMessage);
           messagesContainer.scrollTop = messagesContainer.scrollHeight;
         })
@@ -214,13 +222,13 @@ export default (() => {
         }
       });
 
-      overlay.addEventListener('click', closeChatbot);
+      // overlay.addEventListener('click', closeChatbot); // 오버레이 클릭 제거
       
-      document.addEventListener('click', function(e) {
-        if (!popup.contains(e.target) && !toggleButton.contains(e.target)) {
-          closeChatbot();
-        }
-      });
+      // document.addEventListener('click', function(e) {
+      //   if (!popup.contains(e.target) && !toggleButton.contains(e.target)) {
+      //     closeChatbot();
+      //   }
+      // }); // 외부 클릭으로 닫기 제거
     })();
   `
 

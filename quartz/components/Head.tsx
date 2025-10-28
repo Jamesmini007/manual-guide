@@ -118,6 +118,22 @@ export default (() => {
           `
         }} />
         
+        {/* Marked.js for markdown rendering in chatbot */}
+        <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+        <script dangerouslySetInnerHTML={{
+          __html: `
+            // Configure marked.js for chatbot
+            if (typeof marked !== 'undefined') {
+              marked.setOptions({
+                breaks: true,
+                gfm: true,
+                headerIds: false,
+                mangle: false
+              });
+            }
+          `
+        }} />
+        
 
         {css.map((resource) => CSSResourceToStyleElement(resource, true))}
         {js

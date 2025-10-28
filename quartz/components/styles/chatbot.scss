@@ -7,23 +7,23 @@
   z-index: 100;
 }
 
-.chatbot-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(0, 0, 0, 0.5);
-  z-index: 999;
-  opacity: 0;
-  visibility: hidden;
-  transition: all 0.3s ease;
+// .chatbot-overlay {
+//   position: fixed;
+//   top: 0;
+//   left: 0;
+//   width: 100vw;
+//   height: 100vh;
+//   background: rgba(0, 0, 0, 0.5);
+//   z-index: 999;
+//   opacity: 0;
+//   visibility: hidden;
+//   transition: all 0.3s ease;
 
-  &.active {
-    opacity: 1;
-    visibility: visible;
-  }
-}
+//   &.active {
+//     opacity: 1;
+//     visibility: visible;
+//   }
+// } // 오버레이 스타일 제거
 
 .chatbot-button {
   position: relative;
@@ -260,6 +260,69 @@
     background: var(--lightgray);
     color: var(--dark);
     align-self: flex-start;
+    
+    // 마크다운 렌더링을 위한 스타일
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1rem;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+      color: var(--dark);
+    }
+    
+    h1 { font-size: 1.25rem; }
+    h2 { font-size: 1.125rem; }
+    h3 { font-size: 1rem; }
+    
+    p {
+      margin-bottom: 0.75rem;
+      line-height: 1.6;
+    }
+    
+    ul, ol {
+      margin: 0.5rem 0;
+      padding-left: 1.5rem;
+    }
+    
+    li {
+      margin: 0.25rem 0;
+    }
+    
+    code {
+      background: rgba(0, 0, 0, 0.1);
+      padding: 0.125rem 0.25rem;
+      border-radius: 3px;
+      font-family: 'Courier New', monospace;
+      font-size: 0.875rem;
+    }
+    
+    pre {
+      background: rgba(0, 0, 0, 0.05);
+      padding: 0.75rem;
+      border-radius: 6px;
+      overflow-x: auto;
+      margin: 0.5rem 0;
+      
+      code {
+        background: none;
+        padding: 0;
+      }
+    }
+    
+    blockquote {
+      border-left: 3px solid var(--primary);
+      padding-left: 1rem;
+      margin: 0.5rem 0;
+      font-style: italic;
+      color: var(--gray);
+    }
+    
+    strong {
+      font-weight: 600;
+    }
+    
+    em {
+      font-style: italic;
+    }
   }
 
   &.chatbot-user-message {
