@@ -1,0 +1,81 @@
+.darkmode {
+  cursor: pointer;
+  padding: 0;
+  position: relative;
+  background: none;
+  border: none;
+  width: 20px;
+  height: 20px;
+  margin: 0;
+  text-align: inherit;
+  flex-shrink: 0;
+
+  & svg {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: calc(50% - 10px);
+    fill: var(--darkgray);
+    transition: opacity 0.1s ease;
+  }
+}
+
+:root[saved-theme="dark"] {
+  color-scheme: dark;
+}
+
+:root[saved-theme="light"] {
+  color-scheme: light;
+}
+
+:root[saved-theme="dark"] .darkmode {
+  & > .dayIcon {
+    display: none;
+  }
+  & > .nightIcon {
+    display: inline;
+  }
+}
+
+:root .darkmode {
+  & > .dayIcon {
+    display: inline;
+  }
+  & > .nightIcon {
+    display: none;
+  }
+}
+
+
+
+
+
+
+
+/* 기본값 */
+:root{
+  --x-bg:#fff; --x-text:#0f1116;
+  --x-border:#e7eaf2; --x-sep:#eef1f6;
+  --x-hover:#f5f7fe; --x-active:#eaf1ff; --x-accent:#2563eb;
+}
+ 
+/* 다크값(모든 다크 플래그 대응) */
+:where(:root[saved-theme="dark"], html.theme-dark, html.dark, html[data-theme="dark"]){
+  --x-bg:#0f131a;
+  --x-text:#eef2f6;   // ← 기존에 #0f131a로 되어 있던 부분을 밝게!
+  --x-border:#2a3240; --x-sep:#1c2432;
+  --x-hover:#162031; --x-active:#182642; --x-accent:#60a5fa;
+}
+ 
+/* Explorer 링크 색 하드코딩 제거 → 변수 사용 */
+.sidebar.left .explorer .explorer-content li > a{
+  color: var(--x-text) !important;
+}
+/* 활성 시 확실한 강조(원하면 A/B 중 선택) */
+.sidebar.left .explorer .explorer-content li > a:is(.active,[aria-current="page"],.is-active){
+  background: color-mix(in srgb, var(--x-accent) 16%, transparent) !important;
+  color: var(--x-accent) !important;
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--x-accent) 45%, transparent) !important;
+  border-radius: 8px;
+}
+

@@ -1,0 +1,126 @@
+@use "../../styles/variables.scss" as *;
+ 
+.graph {
+  /* 제목: 항상 검정 + 간격 정돈 */
+  & > h3 {
+    font-size: 1rem;
+    margin: 0 0 8px 0;
+    color: #fff; /* 검정 고정 */
+    font-weight: 800;
+    letter-spacing: -0.01em;
+  }
+ 
+  /* 카드 외형: 그래프 내부는 손대지 않음 */
+  & > .graph-outer {
+    background: #fff;                 /* 화이트 카드 (다크에서도 유지) */
+    color: #0f1116;                   /* <- 기존 color:#fff 제거 */
+    border: 1px solid var(--lightgray);
+    border-radius: 18px;              /* 라운드 업 */
+    box-shadow: 0 8px 24px rgba(16,24,40,.06);
+    box-sizing: border-box;
+    height: 250px;
+    margin: 0.5em 0;
+    position: relative;
+    overflow: hidden;
+ 
+    /* 그래프 렌더(canvas/svg) 자체는 레이아웃 변경 금지: 모서리만 살짝 */
+    & > canvas,
+    & > svg {
+      display: block;
+      border-radius: 14px;
+    }
+ 
+    /* 우상단 '전역 그래프' 버튼: 항상 위로 보이게 + 호버 */
+    & > .global-graph-icon {
+      cursor: pointer;
+      background: none;
+      border: none;
+      color: var(--dark);
+      opacity: 0.7;
+      width: 24px;
+      height: 24px;
+      position: absolute;
+      z-index: 2;                     /* <- 추가: 캔버스 위 */
+      padding: 0.2rem;
+      margin: 0.3rem;
+      top: 0;
+      right: 0;
+      border-radius: 6px;
+      background-color: transparent;
+      transition: background-color 0.2s ease, opacity 0.2s ease;
+ 
+      &:hover { background-color: var(--lightgray); opacity: 1; }
+    }
+  }
+ 
+  /* 풀뷰 오버레이는 기존 동작 그대로 (변경 없음) */
+  & > .global-graph-outer {
+    position: fixed;
+    z-index: 9999;
+    left: 0; top: 0;
+    width: 100vw; height: 100%;
+    backdrop-filter: blur(4px);
+    display: none;
+    overflow: hidden;
+ 
+    &.active { display: inline-block; }
+ 
+    & > .global-graph-container {
+      border: 1px solid var(--lightgray);
+      background-color: var(--light);
+      border-radius: 8px;
+      box-sizing: border-box;
+      position: fixed;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      height: 80vh; width: 80vw;
+ 
+      @media all and not ($desktop) { width: 90%; }
+    }
+  }
+}
+ 
+/* 다크 테마에서도 ‘화이트 카드 + 검정 제목’ 유지 */
+:root.theme-light .graph > h3,
+html[data-theme="light"] .graph > h3 { color: #0f1116; }
+ 
+:root.theme-dark .graph > .graph-outer,
+html.theme-dark .graph > .graph-outer,
+html.dark .graph > .graph-outer,
+html[data-theme="dark"] .graph > .graph-outer {
+  background: #fff;
+  border-color: #e7eaf2;
+  box-shadow: 0 8px 24px rgba(16,24,40,.35);
+}
+ 
+ 
+/* 그래프 우상단 확장 버튼: 항상 hover 상태처럼 보이기 */
+.graph > .graph-outer > .global-graph-icon{
+  z-index: 2;                 /* 캔버스 위에 */
+  opacity: 1;                 /* ← hover와 동일 */
+  background-color: var(--lightgray);  /* ← hover와 동일 */
+  color: var(--dark);         /* 아이콘 색(검정). 흰색을 원하면 #fff로 */
+  border-radius: 6px;
+}
+ 
+/* hover 시에도 스타일 변화 없게(깜박임 방지) */
+.graph > .graph-outer > .global-graph-icon:hover{
+  background-color: var(--lightgray);
+  opacity: 1;
+  color: var(--dark);
+}
+ 
+/* (선택) 다크 모드에서 아이콘을 흰색으로 원하면 이 블록 추가 */
+html[data-theme="dark"] .graph > .graph-outer > .global-graph-icon{
+  background-color: #4b5563; /* 조금 더 진한 회색 알약 */
+  color: #fff;               /* 아이콘 흰색 */
+}
+ 
+:where(html, :root):not([data-theme="dark"]) .graph > h3,
+:root[saved-theme="light"] .graph > h3,
+html.theme-light .graph > h3{ color:#0f1116; }
+ 
+:where(html, :root)[data-theme="dark"] .graph > h3,
+:root[saved-theme="dark"] .graph > h3,
+html.theme-dark .graph > h3,
+html.dark .graph > h3{ color:#eef2f6; }

@@ -1,0 +1,160 @@
+@use "../../styles/variables.scss" as *;
+
+/* 보이는 줄 수 가볍게 조절하고 싶으면 여기 숫자만 */
+:root { --bl-row: 42px; --bl-visible: 6; }
+ 
+.backlinks{
+  display: flex;
+  flex-direction: column;
+  background: var(--x-bg);
+  color: var(--x-text);
+  border: 1px solid var(--x-border);
+  border-radius: 18px;
+  padding: 12px;
+  box-shadow: 0 8px 24px rgba(16,24,40,.06);
+}
+ 
+/* 제목은 텍스트만 담백하게 */
+.backlinks > h3{
+  font-size: .95rem;
+  font-weight: 800;
+  letter-spacing: -.01em;
+  margin: 0 0 6px 0;
+  padding: 0;
+  background: transparent !important;
+  box-shadow: none !important;
+  color: var(--x-text);
+}
+ 
+/* 목록 컨테이너: 세로 스크롤만, 가로는 차단 */
+.backlinks > ul,
+.backlinks > ul.overflow{
+  list-style: none;
+  margin: 6px 0 0;
+  padding: 6px 6px 10px;
+  border-top: 1px solid var(--x-sep);
+  box-sizing: border-box;
+  max-height: calc(var(--bl-row) * var(--bl-visible));
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  scrollbar-gutter: stable both-edges;
+}
+ 
+/* 아이템(줄) */
+.backlinks > ul li{
+  margin: 0;
+  padding: 0;
+}
+ 
+/* 링크(Explorer와 동일한 pill 스타일) */
+.backlinks > ul li > a{
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 8px 10px;
+  margin: 2px 0;
+  border-radius: 12px;
+ 
+  color: var(--x-text) !important;
+  background: transparent !important;
+  text-decoration: none !important;
+  box-shadow: none !important;
+  border: 0 !important;
+  filter: none !important;
+  opacity: .95;
+ 
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 0;
+ 
+  transition: background .15s ease, color .15s ease, opacity .15s ease;
+}
+.backlinks > ul li > a:hover{
+  background: var(--x-hover);
+  opacity: 1;
+}
+ 
+/* (옵션) 왼쪽에 작은 점 — Explorer 톤과 맞춤 */
+.backlinks > ul li > a::before{
+  content: "";
+  width: 6px; height: 6px; flex: 0 0 6px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--x-text) 28%, transparent);
+}
+.backlinks > ul li > a:hover::before{
+  background: var(--x-accent);
+}
+ 
+/* 현재 문서와 일치 표시가 필요하면 active 클래스 사용 */
+.backlinks > ul li > a.active,
+.backlinks > ul li > a[aria-current="page"]{
+  background: var(--x-active) !important;
+  color: var(--x-accent) !important;
+  position: relative;
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--x-accent) 36%, transparent);
+}
+.backlinks > ul li > a.active::after,
+.backlinks > ul li > a[aria-current="page"]::after{
+  content: "↗";
+  margin-left: auto;
+  opacity: .8;
+}
+ 
+/* 요약/프리뷰 텍스트가 있으면(작은 글씨) */
+.backlinks .preview,
+.backlinks small,
+.backlinks .desc{
+  display: block;
+  font-size: .85rem;
+  margin-top: 2px;
+  color: color-mix(in srgb, var(--x-text) 55%, transparent);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+ 
+/* 기본 마커/들여쓰기 제거(브라우저별 안전장치) */
+.backlinks ul, .backlinks li{ list-style: none !important; padding-inline-start: 0; margin-inline-start: 0; }
+.backlinks li::marker, .backlinks li::before{ content: none !important; }
+.backlinks li{ display: block; }
+ 
+/* 링크가 폭을 밀지 않도록 전역 안전장치 */
+.backlinks, .backlinks *{ max-width: 100%; min-width: 0; }
+ 
+/* —— 스크롤바(라이트/다크 모두 변수 기반) —— */
+.backlinks > ul,
+.backlinks > ul.overflow{
+  scrollbar-width: thin; /* Firefox */
+  scrollbar-color: color-mix(in srgb, var(--x-text) 30%, transparent) transparent;
+}
+.backlinks > ul::-webkit-scrollbar,
+.backlinks > ul.overflow::-webkit-scrollbar{ width: 10px; }
+.backlinks > ul:hover::-webkit-scrollbar,
+.backlinks > ul.overflow:hover::-webkit-scrollbar{ width: 12px; }
+.backlinks > ul::-webkit-scrollbar-track,
+.backlinks > ul.overflow::-webkit-scrollbar-track{
+  background: transparent;
+  margin: 6px 0;
+}
+.backlinks > ul::-webkit-scrollbar-thumb,
+.backlinks > ul.overflow::-webkit-scrollbar-thumb{
+  border-radius: 999px;
+  border: 3px solid transparent;
+  background-clip: padding-box;
+  background-color: color-mix(in srgb, var(--x-text) 28%, transparent);
+  transition: background-color .15s ease, border-color .15s ease;
+}
+.backlinks > ul:hover::-webkit-scrollbar-thumb,
+.backlinks > ul.overflow:hover::-webkit-scrollbar-thumb{
+  background-color: color-mix(in srgb, var(--x-text) 40%, transparent);
+}
+ 
+/* 다크모드 그림자만 톤 업(색은 이미 var(--x-*)로 자동 전환) */
+html[data-theme="dark"] .backlinks,
+body[data-theme="dark"] .backlinks,
+:root[data-theme="dark"] .backlinks{
+  box-shadow: 0 12px 30px rgba(0,0,0,.55);
+}
+ 
