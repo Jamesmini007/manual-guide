@@ -10,7 +10,7 @@ build: 2025.09.19
   <div class="lx2-hero__inner">
     <div class="lx2-hero__content">
       <h1 class="lx2-hero__title" style="color:#fff !important;-webkit-text-fill-color:#fff !important">
-        통합학습관리<br>시스템ㅇㅇ<br> 
+        통합학습관리<br>시스템<br> 
         <span class="lx2-title-accent" style="color:#fff !important;-webkit-text-fill-color:#fff !important">
           LX2
         </span>
