@@ -1,0 +1,58 @@
+!SESSION 2025-09-26 16:04:27.650 -----------------------------------------------
+eclipse.buildId=4.36.0.202506052058
+java.version=21.0.7
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=macosx, ARCH=aarch64, WS=cocoa, NL=ko_KR
+Framework arguments:  -product org.springframework.boot.ide.branding.sts4 -keyring /Users/4c/.eclipse_keyring
+Command-line arguments:  -os macosx -ws cocoa -arch aarch64 -product org.springframework.boot.ide.branding.sts4 -keyring /Users/4c/.eclipse_keyring
+
+!ENTRY ch.qos.logback.classic 1 0 2025-09-26 16:04:28.553
+!MESSAGE Activated before the state location was initialized. Retry after the state location is initialized.
+
+!ENTRY org.eclipse.lemminx.uber-jar 4 0 2025-09-26 16:04:28.633
+!MESSAGE bundle org.eclipse.lemminx.uber-jar:0.31.0 (329) Component descriptor entry 'OSGI-INF/*.xml' not found
+
+!ENTRY ch.qos.logback.classic 1 0 2025-09-26 16:05:06.029
+!MESSAGE Logback config file: /Volumes/4csoft/manual-guide/.metadata/.plugins/org.eclipse.m2e.logback/logback.2.7.100.20250418-1315.xml
+
+!ENTRY org.eclipse.ui 2 0 2025-09-26 16:05:06.138
+!MESSAGE Warnings while parsing the commands from the 'org.eclipse.ui.commands' and 'org.eclipse.ui.actionDefinitions' extension points.
+!SUBENTRY 1 org.eclipse.ui 2 0 2025-09-26 16:05:06.138
+!MESSAGE Commands should really have a category: plug-in='org.springframework.tooling.boot.ls', id='spring.initializr.addStarters', categoryId='org.eclipse.lsp4e.commandCategory'
+
+!ENTRY org.eclipse.ui 2 0 2025-09-26 16:05:06.324
+!MESSAGE Warnings while parsing the commands from the 'org.eclipse.ui.commands' and 'org.eclipse.ui.actionDefinitions' extension points.
+!SUBENTRY 1 org.eclipse.ui 2 0 2025-09-26 16:05:06.324
+!MESSAGE Commands should really have a category: plug-in='org.springframework.tooling.boot.ls', id='spring.initializr.addStarters', categoryId='org.eclipse.lsp4e.commandCategory'
+
+!ENTRY org.eclipse.mylyn.tasks.ui 2 0 2025-09-26 16:05:08.347
+!MESSAGE No search provider was registered. Tasks search is not available.
+!SESSION 2025-09-26 16:06:22.582 -----------------------------------------------
+eclipse.buildId=4.36.0.202506052058
+java.version=21.0.7
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=macosx, ARCH=aarch64, WS=cocoa, NL=ko_KR
+Framework arguments:  -product org.springframework.boot.ide.branding.sts4 -keyring /Users/4c/.eclipse_keyring
+Command-line arguments:  -os macosx -ws cocoa -arch aarch64 -product org.springframework.boot.ide.branding.sts4 -keyring /Users/4c/.eclipse_keyring
+
+!ENTRY ch.qos.logback.classic 1 0 2025-09-26 16:06:23.628
+!MESSAGE Activated before the state location was initialized. Retry after the state location is initialized.
+
+!ENTRY org.eclipse.lemminx.uber-jar 4 0 2025-09-26 16:06:23.702
+!MESSAGE bundle org.eclipse.lemminx.uber-jar:0.31.0 (329) Component descriptor entry 'OSGI-INF/*.xml' not found
+
+!ENTRY ch.qos.logback.classic 1 0 2025-09-26 16:06:48.519
+!MESSAGE Logback config file: /Volumes/4csoft/manual-guide/.metadata/.plugins/org.eclipse.m2e.logback/logback.2.7.100.20250418-1315.xml
+
+!ENTRY org.eclipse.ui 2 0 2025-09-26 16:06:48.593
+!MESSAGE Warnings while parsing the commands from the 'org.eclipse.ui.commands' and 'org.eclipse.ui.actionDefinitions' extension points.
+!SUBENTRY 1 org.eclipse.ui 2 0 2025-09-26 16:06:48.593
+!MESSAGE Commands should really have a category: plug-in='org.springframework.tooling.boot.ls', id='spring.initializr.addStarters', categoryId='org.eclipse.lsp4e.commandCategory'
+
+!ENTRY org.eclipse.ui 2 0 2025-09-26 16:06:48.743
+!MESSAGE Warnings while parsing the commands from the 'org.eclipse.ui.commands' and 'org.eclipse.ui.actionDefinitions' extension points.
+!SUBENTRY 1 org.eclipse.ui 2 0 2025-09-26 16:06:48.743
+!MESSAGE Commands should really have a category: plug-in='org.springframework.tooling.boot.ls', id='spring.initializr.addStarters', categoryId='org.eclipse.lsp4e.commandCategory'
+
+!ENTRY org.eclipse.mylyn.tasks.ui 2 0 2025-09-26 16:06:50.379
+!MESSAGE No search provider was registered. Tasks search is not available.
